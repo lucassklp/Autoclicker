@@ -6,7 +6,7 @@ namespace Autoclicker.Game
     {
         public static Bitmap AsBitmap(this GameObject obj)
         {
-            return new Bitmap($"Images/{obj.ToString()}.bmp");
+            return new Bitmap($@"Images\{obj}.bmp");
         }
     }
 

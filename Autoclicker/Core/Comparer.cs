@@ -9,15 +9,8 @@ namespace Autoclicker.Core
         public Rectangle Search(Bitmap frame, Bitmap @object)
         {
             Rectangle location = Rectangle.Empty;
-            for (int i = 0; i <= 20; i++)
-            {
-                double tolerance = Convert.ToDouble(i) / 100.0;
-
-                location = this.Search(@object, frame, tolerance);
-
-                if (location.Width != 0)
-                    break;
-            }
+            double tolerance = 0.2;
+            location = this.Search(@object, frame, tolerance);
             return location;
         }
 
