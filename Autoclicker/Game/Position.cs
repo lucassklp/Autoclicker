@@ -110,6 +110,10 @@ namespace Autoclicker.Game
         
         public static Point ClosePopup => Adjust(new Point(410, 250));  
 
+        public static Point SaintPatrolConfirm => Adjust(new Point(365, 290));
+
+
+
         #endregion
 
         #endregion

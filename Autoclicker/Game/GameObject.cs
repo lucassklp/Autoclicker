@@ -224,7 +224,7 @@ namespace Autoclicker.Game
         /*Festival Treasure*/
         TreasureSelected,
         TreasureNotSelected,
-
-
+        SaintPatrol,
+        PatrolSaintMsg
     }
 }
