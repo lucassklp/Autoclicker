@@ -101,6 +101,7 @@ namespace Autoclicker.Game
         public static Point Robber_Start => Adjust(new Point(400, 300));
         
         public static Point ConvenienceShop_CentStore => Adjust(new Point(295, 291));
+        public static Point ConvenienceShop_MageStore => Adjust(new Point(290, 313));
 
         public static Point CloseConvenienceShop => Adjust(new Point(670, 145));
         public static Point ConfirmPurchaseConvinienceStore => Adjust(new Point(640, 392));
