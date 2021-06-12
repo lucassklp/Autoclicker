@@ -129,6 +129,12 @@ namespace Autoclicker.Game
         }
 
 
+        public void KeyPress(Key key)
+        {
+            Focus();
+            this.robot.KeyPress(key);
+        }
+
         public void Focus()
         {
             BringProcessToFront(this.process);

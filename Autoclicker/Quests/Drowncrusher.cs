@@ -12,8 +12,9 @@ namespace Autoclicker.Quests
             var leader = party.First();
 
             //Colocar aqui o item do Drown
-            var item = GameObject.MaleMage_Armor;
+            var item = GameObject.FemaleMage_Helm;
             var positionStore = Position.ConvenienceShop_MageStore;
+
 
             while (true)
             {
@@ -23,22 +24,17 @@ namespace Autoclicker.Quests
                 Thread.Sleep(500);
                 if (leader.IsNotThere(item))
                 {
-                    leader.MoveAndClickOn(GameObject.CloseButton);
-                    leader.MoveAndClickOn(Position.InventoryButton);
-                    leader.MoveAndRightClickOn(GameObject.ConvenienceStore);
-                    leader.MoveAndClickOn(positionStore);
+                    leader.KeyPress(Desktop.Robot.Key.Pause);
 
                     Thread.Sleep(500);
                     leader.MoveAndClickOn(item);
                     
-                    for (int i = 0; i < 21; i++)
+                    for (int i = 0; i < 15; i++)
                     {
                         leader.Click();
                     }
 
-                    leader.MoveAndClickOn(Position.ConfirmPurchaseConvinienceStore);
-                    leader.MoveAndClickOn(GameObject.CloseButton);
-                    leader.MoveAndClickOn(GameObject.CloseButton);
+                    leader.KeyPress(Desktop.Robot.Key.Pause);
 
                     leader.MoveAndClickOn(Position.GiveButton);
                     leader.MoveAndClickOn(GameObject.Drowcrusher);
