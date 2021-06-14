@@ -16,7 +16,7 @@ namespace Autoclicker
         {
             //Carrega as janelas dos personagens
             //Por padrão, o primeiro da lista deve ser o lider
-            var characters = GameWindowController.GetGameWindows("Atlantas");
+            var characters = GameWindowController.GetGameWindows("Oceane");
             
             var type = Type.GetType($"Autoclicker.Quests.{args[0]}");
             var quest = (IQuest)Activator.CreateInstance(type);

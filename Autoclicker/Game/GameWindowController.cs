@@ -69,7 +69,7 @@ namespace Autoclicker.Game
         public void MoveAndClickOn(GameObject gameObject)
         {
             Focus();
-            Thread.Sleep(500);
+            Thread.Sleep(250);
             Point point;
             do
             {
@@ -93,7 +93,7 @@ namespace Autoclicker.Game
         {
             var rect = GetWindowRectangle();
             position.Offset(rect.X, rect.Y);
-            this.robot.LinearMoviment(position);
+            this.robot.LinearMoviment(position, TimeSpan.FromMilliseconds(200));
         }
 
 
