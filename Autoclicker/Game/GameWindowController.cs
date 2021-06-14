@@ -93,12 +93,7 @@ namespace Autoclicker.Game
         {
             var rect = GetWindowRectangle();
             position.Offset(rect.X, rect.Y);
-            var random = new Random();
-            var currentPosition = robot.GetMousePosition();
-            var x = random.Next(rect.X, rect.X + rect.Width);
-            var y = random.Next(rect.Y, rect.Y + rect.Height);
-            var controlPoint = new Point(x, y);
-            this.robot.BezierMoviment(currentPosition, controlPoint, position, TimeSpan.FromMilliseconds(350));
+            this.robot.LinearMoviment(position);
         }
 
 
