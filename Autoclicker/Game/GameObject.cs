@@ -225,6 +225,8 @@ namespace Autoclicker.Game
         TreasureSelected,
         TreasureNotSelected,
         SaintPatrol,
-        PatrolSaintMsg
+        PatrolSaintMsg,
+
+        ContributionExchanger
     }
 }

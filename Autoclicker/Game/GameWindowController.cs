@@ -78,11 +78,28 @@ namespace Autoclicker.Game
             MoveAndClickOn(point);
         }
 
+        public void MoveAndClickOn(GameObject gameObject, TimeSpan interval)
+        {
+            Focus();
+            Point point;
+            do
+            {
+                point = Find(gameObject);
+            } while (point == default(Point));
+            MoveAndClickOn(point, interval);
+        }
+
 
         public void Click()
         {
             this.robot.Click();
         }
+
+        public void Click(int interval)
+        {
+            this.robot.Click(Mouse.RightButton(interval));
+        }
+
 
         public void RightClick()
         {
@@ -91,9 +108,10 @@ namespace Autoclicker.Game
 
         public void MouseMove(Point position)
         {
+            Thread.Sleep(250);
             var rect = GetWindowRectangle();
             position.Offset(rect.X, rect.Y);
-            this.robot.LinearMoviment(position, TimeSpan.FromMilliseconds(200));
+            this.robot.LinearMoviment(position, TimeSpan.FromMilliseconds(100));
         }
 
 
@@ -114,6 +132,16 @@ namespace Autoclicker.Game
             Focus();
             MouseMove(position);
             Click();
+        }
+
+        public void MoveAndClickOn(Point position, TimeSpan interval)
+        {
+            Focus();
+            MouseMove(position);
+            int timing = (int)interval.TotalMilliseconds / 2;
+            Thread.Sleep(timing);
+            Click();
+            Thread.Sleep(timing);
         }
 
         public void MoveAndRightClickOn(Point position)

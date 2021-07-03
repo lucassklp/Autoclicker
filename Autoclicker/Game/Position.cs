@@ -104,7 +104,7 @@ namespace Autoclicker.Game
         public static Point ConvenienceShop_MageStore => Adjust(new Point(290, 313));
 
         public static Point CloseConvenienceShop => Adjust(new Point(670, 145));
-        public static Point ConfirmPurchaseConvinienceStore => Adjust(new Point(640, 392));
+        public static Point ConfirmPurchaseConvinienceStore => Adjust(new Point(640, 390));
 
         public static Point StartTreasureEvent => Adjust(new Point(363, 288));
         public static Point ConfirmGiveItem => Adjust(new Point(625, 450));
@@ -118,5 +118,14 @@ namespace Autoclicker.Game
         #endregion
 
         #endregion
+
+
+
+
+        public static Point IWantToRedeemNow => Adjust(new Point(313, 273));
+        public static Point ImSureToExchangeIt => Adjust(new Point(332, 254));
+        public static Point ArmorOfDream => Adjust(new Point(307, 273));
+        public static Point TollItem => Adjust(new Point(290, 310));
+
     }
 }
