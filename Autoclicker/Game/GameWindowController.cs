@@ -45,6 +45,18 @@ namespace Autoclicker.Game
             this.comparer = comparer;
         }
 
+        public GameWindowController SetAutoDelay(int ms)
+        {
+            robot.AutoDelay = (uint)ms;
+            return this;
+        }
+
+        public GameWindowController Wait(int ms)
+        {
+            Thread.Sleep(ms);
+            return this;
+        }
+
         private Bitmap TakeScreenshot()
         {
             var rect = GetWindowRectangle();
@@ -61,21 +73,24 @@ namespace Autoclicker.Game
             return new Point(objRect.X + objRect.Width / 2, objRect.Y + objRect.Height / 2);
         }
 
-        public void WaitFor(GameObject gameObject)
+        public GameWindowController WaitFor(GameObject gameObject)
         {
             while(IsNotThere(gameObject))
             {                    
                 Thread.Sleep(500);
             }
+
+            return this;
         }
 
-        public void WaitForClicking(GameObject gameObject)
+        public GameWindowController WaitForClicking(GameObject gameObject)
         {
             while(IsNotThere(gameObject))
             {                    
                 Thread.Sleep(500);
             }
             Click();
+            return this;
         }
 
         public bool IsNotThere(GameObject gameObject)
@@ -83,7 +98,7 @@ namespace Autoclicker.Game
             return Find(gameObject) == default;
         }
 
-        public void MoveAndClickOn(GameObject gameObject)
+        public GameWindowController ClickOn(GameObject gameObject)
         {
             Focus();
             Thread.Sleep(250);
@@ -92,10 +107,12 @@ namespace Autoclicker.Game
             {
                 point = Find(gameObject);
             } while (point == default(Point));
-            MoveAndClickOn(point);
+            ClickOn(point);
+
+            return this;
         }
 
-        public void MoveAndClickOn(GameObject gameObject, TimeSpan interval)
+        public GameWindowController ClickOn(GameObject gameObject, TimeSpan interval)
         {
             Focus();
             Point point;
@@ -103,36 +120,42 @@ namespace Autoclicker.Game
             {
                 point = Find(gameObject);
             } while (point == default(Point));
-            MoveAndClickOn(point, interval);
+            ClickOn(point, interval);
+
+            return this;
         }
 
 
-        public void Click()
+        public GameWindowController Click()
         {
             this.robot.Click();
+            return this;
         }
 
-        public void Click(int interval)
+        public GameWindowController Click(int interval)
         {
             this.robot.Click(Mouse.RightButton(interval));
+            return this;
         }
 
 
-        public void RightClick()
+        public GameWindowController RightClick()
         {
             this.robot.Click(Mouse.RightButton());
+            return this;
         }
 
-        public void MouseMove(Point position)
+        public GameWindowController MouseMove(Point position)
         {
             Thread.Sleep(250);
             var rect = GetWindowRectangle();
             position.Offset(rect.X, rect.Y);
             this.robot.LinearMoviment(position, TimeSpan.FromMilliseconds(100));
+            return this;
         }
 
 
-        public void MoveAndRightClickOn(GameObject gameObject)
+        public GameWindowController RightClickOn(GameObject gameObject)
         {
             Focus();
             Thread.Sleep(500);
@@ -141,17 +164,19 @@ namespace Autoclicker.Game
             {
                 point = Find(gameObject);
             } while (point == default(Point));
-            MoveAndRightClickOn(point);
+            RightClickOn(point);
+            return this;
         }
 
-        public void MoveAndClickOn(Point position)
+        public GameWindowController ClickOn(Point position)
         {
             Focus();
             MouseMove(position);
             Click();
+            return this;
         }
 
-        public void MoveAndClickOn(Point position, TimeSpan interval)
+        public GameWindowController ClickOn(Point position, TimeSpan interval)
         {
             Focus();
             MouseMove(position);
@@ -159,25 +184,28 @@ namespace Autoclicker.Game
             Thread.Sleep(timing);
             Click();
             Thread.Sleep(timing);
+            return this;
         }
 
-        public void MoveAndRightClickOn(Point position)
+        public GameWindowController RightClickOn(Point position)
         {
             Focus();
             MouseMove(position);
             RightClick();
+            return this;
         }
 
-
-        public void KeyPress(Key key)
+        public GameWindowController KeyPress(Key key)
         {
             Focus();
             this.robot.KeyPress(key);
+            return this;
         }
 
-        public void Focus()
+        public GameWindowController Focus()
         {
             BringProcessToFront(this.process);
+            return this;
         }
 
         private Rectangle GetWindowRectangle()

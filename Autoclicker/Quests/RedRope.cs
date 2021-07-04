@@ -13,64 +13,32 @@ namespace Autoclicker.Quests
 
             while(true)
             {
-                leader.MoveAndClickOn(GameObject.MoonElder);
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.MoonHelderTrouble);
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.IllFindRedRope);
-
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.ClosePopup);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.InventoryButton);
-
-
-                Thread.Sleep(500);
-                leader.MoveAndRightClickOn(GameObject.Windseeker);
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.Hurricane9);
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.Spot6);
-
-                Thread.Sleep(1500);
-                leader.MoveAndClickOn(Position.WalkCloserToRobberChief);
-
-                Thread.Sleep(1500);
-                leader.MoveAndClickOn(GameObject.RobberChief);
-
-                leader.WaitForClicking(GameObject.RobberChiefMsg);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.GiveMeTheRedRope);
-
-                Thread.Sleep(4000);
-
-                leader.WaitFor(GameObject.Out_Of_Battle);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.InventoryButton);
-
-                Thread.Sleep(500);
-                leader.MoveAndRightClickOn(GameObject.RedTeleport);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.RedTeleport_Wood);
-
-                Thread.Sleep(1500);
-                leader.MoveAndClickOn(GameObject.CloseButton);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.MapButton);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.Minimap_MoonElder);
-
-                Thread.Sleep(500);
-                leader.MoveAndClickOn(Position.MapButton);
-
-                Thread.Sleep(9500);
+                leader.SetAutoDelay(500)
+                    .ClickOn(GameObject.MoonElder)
+                    .ClickOn(Position.Option_MoonHelderTrouble)
+                    .ClickOn(Position.Option_IllFindRedRope)
+                    .ClickOn(Position.ClosePopup)
+                    .ClickOn(Position.InventoryButton)
+                    .RightClickOn(GameObject.Windseeker)
+                    .ClickOn(Position.Windseeker_Option_Hurricane9)
+                    .ClickOn(Position.Windseeker_Option_Spot6)
+                    .Wait(1500)
+                    .ClickOn(Position.WalkCloserToRobberChief)
+                    .Wait(1000)
+                    .ClickOn(GameObject.RobberChief)
+                    .WaitForClicking(GameObject.RobberChiefMsg)
+                    .ClickOn(Position.Option_GiveMeTheRedRope)
+                    .Wait(4000)
+                    .WaitFor(GameObject.Out_Of_Battle)
+                    .ClickOn(Position.InventoryButton)
+                    .RightClickOn(GameObject.RedTeleport)
+                    .ClickOn(Position.RedTeleport_Wood)
+                    .Wait(1500)
+                    .ClickOn(GameObject.CloseButton)
+                    .ClickOn(Position.MapButton)
+                    .ClickOn(Position.Minimap_MoonElder)
+                    .ClickOn(Position.MapButton)
+                    .Wait(10000);
             }
         }
     }

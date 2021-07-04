@@ -12,12 +12,12 @@ namespace Autoclicker.Quests
             var leader = party.First();
             while(true)
             {
-                leader.MoveAndClickOn(GameObject.SaintPatrol);
+                leader.ClickOn(GameObject.SaintPatrol);
                 while(leader.IsNotThere(GameObject.PatrolSaintMsg))
                 {
                     continue;
                 }
-                leader.MoveAndClickOn(Position.SaintPatrolConfirm);
+                leader.ClickOn(Position.SaintPatrolConfirm);
                 Thread.Sleep(1000);
                 while (leader.IsNotThere(GameObject.Out_Of_Battle))
                 {

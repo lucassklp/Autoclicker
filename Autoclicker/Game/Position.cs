@@ -127,12 +127,12 @@ namespace Autoclicker.Game
         public static Point ArmorOfDream => Adjust(new Point(307, 273));
         public static Point TollItem => Adjust(new Point(290, 310));
 
-        public static Point MoonHelderTrouble => Adjust(new Point(325, 270));
-        public static Point IllFindRedRope => Adjust(new Point(330, 255));
-        public static Point Hurricane9 => Adjust(new Point(490, 255));
-        public static Point Spot6 => Adjust(new Point(275, 330));
+        public static Point Option_MoonHelderTrouble => Adjust(new Point(325, 270));
+        public static Point Option_IllFindRedRope => Adjust(new Point(330, 255));
+        public static Point Windseeker_Option_Hurricane9 => Adjust(new Point(490, 255));
+        public static Point Windseeker_Option_Spot6 => Adjust(new Point(275, 330));
         public static Point WalkCloserToRobberChief => Adjust(new Point(290, 90));
-        public static Point GiveMeTheRedRope => Adjust(new Point(330, 235));
+        public static Point Option_GiveMeTheRedRope => Adjust(new Point(330, 235));
         public static Point RedTeleport_Wood => Adjust(new Point(290, 253));
 
         public static Point Minimap_MoonElder => Adjust(new Point(369, 207));

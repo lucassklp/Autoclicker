@@ -16,7 +16,7 @@ namespace Autoclicker.Quests
             {
                 if(!leader.IsNotThere(GameObject.Out_Of_Battle))
                 {
-                    leader.MoveAndClickOn(new Point(toggle?300:600, 300));
+                    leader.ClickOn(new Point(toggle?300:600, 300));
                     Thread.Sleep(toggle? 2000 : 500);
                     toggle = !toggle;
                 }

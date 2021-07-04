@@ -18,8 +18,8 @@ namespace Autoclicker.Quests
 
             while (true)
             {
-                leader.MoveAndClickOn(Position.GiveButton);
-                leader.MoveAndClickOn(GameObject.Drowcrusher);
+                leader.ClickOn(Position.GiveButton);
+                leader.ClickOn(GameObject.Drowcrusher);
 
                 Thread.Sleep(500);
                 if (leader.IsNotThere(item))
@@ -27,7 +27,7 @@ namespace Autoclicker.Quests
                     leader.KeyPress(Desktop.Robot.Key.Pause);
 
                     Thread.Sleep(500);
-                    leader.MoveAndClickOn(item);
+                    leader.ClickOn(item);
                     
                     for (int i = 0; i < 15; i++)
                     {
@@ -36,13 +36,13 @@ namespace Autoclicker.Quests
 
                     leader.KeyPress(Desktop.Robot.Key.Pause);
 
-                    leader.MoveAndClickOn(Position.GiveButton);
-                    leader.MoveAndClickOn(GameObject.Drowcrusher);
+                    leader.ClickOn(Position.GiveButton);
+                    leader.ClickOn(GameObject.Drowcrusher);
                 }
 
-                leader.MoveAndClickOn(item);
-                leader.MoveAndClickOn(Position.ConfirmGiveItem);
-                leader.MoveAndClickOn(Position.ClosePopup);
+                leader.ClickOn(item);
+                leader.ClickOn(Position.ConfirmGiveItem);
+                leader.ClickOn(Position.ClosePopup);
 
                 Thread.Sleep(3000);
 
