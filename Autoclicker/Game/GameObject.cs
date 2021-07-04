@@ -227,6 +227,13 @@ namespace Autoclicker.Game
         SaintPatrol,
         PatrolSaintMsg,
 
-        ContributionExchanger
+        ContributionExchanger,
+
+        //Red Rope
+        MoonElder,
+        Windseeker,
+        RobberChief,
+        RedTeleport,
+        RobberChiefMsg
     }
 }

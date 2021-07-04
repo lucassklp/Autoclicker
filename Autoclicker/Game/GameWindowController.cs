@@ -61,6 +61,23 @@ namespace Autoclicker.Game
             return new Point(objRect.X + objRect.Width / 2, objRect.Y + objRect.Height / 2);
         }
 
+        public void WaitFor(GameObject gameObject)
+        {
+            while(IsNotThere(gameObject))
+            {                    
+                Thread.Sleep(500);
+            }
+        }
+
+        public void WaitForClicking(GameObject gameObject)
+        {
+            while(IsNotThere(gameObject))
+            {                    
+                Thread.Sleep(500);
+            }
+            Click();
+        }
+
         public bool IsNotThere(GameObject gameObject)
         {
             return Find(gameObject) == default;
