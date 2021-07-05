@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Autoclicker.Game;
 
 namespace Autoclicker.Quests
@@ -17,7 +16,7 @@ namespace Autoclicker.Quests
                     .ClickOn(GameObject.MoonElder)
                     .ClickOn(Position.Option_MoonHelderTrouble)
                     .ClickOn(Position.Option_IllFindRedRope)
-                    .ClickOn(Position.ClosePopup)
+                    .ClickOn(Position.MiddleOfDialogBox)
                     .ClickOn(Position.InventoryButton)
                     .RightClickOn(GameObject.Windseeker)
                     .ClickOn(Position.Windseeker_Option_Hurricane9)

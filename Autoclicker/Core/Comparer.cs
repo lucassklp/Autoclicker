@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -8,13 +9,110 @@ namespace Autoclicker.Core
     {
         public Rectangle Search(Bitmap frame, Bitmap @object)
         {
-            Rectangle location = Rectangle.Empty;
-            double tolerance = 0.2;
-            location = this.Search(@object, frame, tolerance);
-            return location;
+            return  this.Search(@object, frame, 0.2);
         }
 
-        private Rectangle Search(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
+        public List<Rectangle> SearchAll(Bitmap frame, Bitmap @object) 
+        {
+            return this.SearchAll(@object, frame, 0.2);
+        }
+
+        public List<Rectangle> SearchAll(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
+        {
+            BitmapData smallData =
+              smallBmp.LockBits(new Rectangle(0, 0, smallBmp.Width, smallBmp.Height),
+                       System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                       System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            BitmapData bigData =
+              bigBmp.LockBits(new Rectangle(0, 0, bigBmp.Width, bigBmp.Height),
+                       System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                       System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+            int smallStride = smallData.Stride;
+            int bigStride = bigData.Stride;
+
+            int bigWidth = bigBmp.Width;
+            int bigHeight = bigBmp.Height - smallBmp.Height + 1;
+            int smallWidth = smallBmp.Width * 3;
+            int smallHeight = smallBmp.Height;
+
+            var rectangles = new List<Rectangle>();
+
+            int margin = Convert.ToInt32(255.0 * tolerance);
+
+            unsafe
+            {
+                byte* pSmall = (byte*)(void*)smallData.Scan0;
+                byte* pBig = (byte*)(void*)bigData.Scan0;
+
+                int smallOffset = smallStride - smallBmp.Width * 3;
+                int bigOffset = bigStride - bigBmp.Width * 3;
+
+                bool matchFound = true;
+
+                for (int y = 0; y < bigHeight; y++)
+                {
+                    for (int x = 0; x < bigWidth; x++)
+                    {
+                        byte* pBigBackup = pBig;
+                        byte* pSmallBackup = pSmall;
+
+                        for (int i = 0; i < smallHeight; i++)
+                        {
+                            int j = 0;
+                            matchFound = true;
+                            for (j = 0; j < smallWidth; j++)
+                            {
+                                int inf = pBig[0] - margin;
+                                int sup = pBig[0] + margin;
+                                if (sup < pSmall[0] || inf > pSmall[0])
+                                {
+                                    matchFound = false;
+                                    break;
+                                }
+
+                                pBig++;
+                                pSmall++;
+                            }
+
+                            if (!matchFound) break;
+
+                            pSmall = pSmallBackup;
+                            pBig = pBigBackup;
+
+                            pSmall += smallStride * (1 + i);
+                            pBig += bigStride * (1 + i);
+                        }
+
+                        if (matchFound)
+                        {
+                            Rectangle location = Rectangle.Empty;
+                            location.X = x;
+                            location.Y = y;
+                            location.Width = smallBmp.Width;
+                            location.Height = smallBmp.Height;
+                            rectangles.Add(location);
+                        }
+                        else
+                        {
+                            pBig = pBigBackup;
+                            pSmall = pSmallBackup;
+                            pBig += 3;
+                        }
+                    }
+
+                    pBig += bigOffset;
+                }
+            }
+
+            bigBmp.UnlockBits(bigData);
+            smallBmp.UnlockBits(smallData);
+
+            return rectangles;
+        }
+
+
+        public Rectangle Search(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
         {
             BitmapData smallData =
               smallBmp.LockBits(new Rectangle(0, 0, smallBmp.Width, smallBmp.Height),

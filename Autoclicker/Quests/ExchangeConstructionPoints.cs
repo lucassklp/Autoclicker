@@ -13,11 +13,11 @@ namespace Autoclicker.Quests
             var leader = party.First();
             while(true)
             {
-                leader.ClickOn(GameObject.ContributionExchanger);
-                leader.ClickOn(Position.IWantToRedeemNow);
-                leader.ClickOn(Position.TollItem);
-                leader.ClickOn(Position.ImSureToExchangeIt);
-                leader.ClickOn(Position.ClosePopup);
+                leader.ClickOn(GameObject.ContributionExchanger)
+                    .ClickOn(Position.IWantToRedeemNow)
+                    .ClickOn(Position.TollItem)
+                    .ClickOn(Position.ImSureToExchangeIt)
+                    .ClickOn(Position.MiddleOfDialogBox);
             }
         }
     }

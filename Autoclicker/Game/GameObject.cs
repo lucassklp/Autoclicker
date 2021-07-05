@@ -14,6 +14,7 @@ namespace Autoclicker.Game
 
     public enum GameObject
     {
+        Nothing,
         /*-- Portrait/Races --*/
         MaleCent,
         FemaleMage,

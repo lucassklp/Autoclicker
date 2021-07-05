@@ -104,12 +104,12 @@ namespace Autoclicker.Game
         public static Point ConvenienceShop_MageStore => Adjust(new Point(290, 313));
 
         public static Point CloseConvenienceShop => Adjust(new Point(670, 145));
-        public static Point ConfirmPurchaseConvinienceStore => Adjust(new Point(640, 390));
+        public static Point ConvinienceStore_ConfirmPurchase => Adjust(new Point(640, 390));
 
         public static Point StartTreasureEvent => Adjust(new Point(363, 288));
         public static Point ConfirmGiveItem => Adjust(new Point(625, 450));
         
-        public static Point ClosePopup => Adjust(new Point(410, 250));  
+        public static Point MiddleOfDialogBox => Adjust(new Point(410, 250));  
 
         public static Point SaintPatrolConfirm => Adjust(new Point(365, 290));
 

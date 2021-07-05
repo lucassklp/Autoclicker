@@ -83,6 +83,12 @@ namespace Autoclicker.Game
             return this;
         }
 
+        public GameWindowController ThenRun(Action action)
+        {
+            action();
+            return this;
+        }
+
         public GameWindowController WaitForClicking(GameObject gameObject)
         {
             while(IsNotThere(gameObject))
@@ -96,6 +102,11 @@ namespace Autoclicker.Game
         public bool IsNotThere(GameObject gameObject)
         {
             return Find(gameObject) == default;
+        }
+
+        public bool IsThere(GameObject gameObject)
+        {
+            return Find(gameObject) != default;
         }
 
         public GameWindowController ClickOn(GameObject gameObject)

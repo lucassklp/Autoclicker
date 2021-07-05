@@ -15,45 +15,38 @@ namespace Autoclicker.Quests
             var item = GameObject.FemaleMage_Helm;
             var positionStore = Position.ConvenienceShop_MageStore;
 
-
             while (true)
             {
-                leader.ClickOn(Position.GiveButton);
-                leader.ClickOn(GameObject.Drowcrusher);
+                leader.SetAutoDelay(500)
+                    .ClickOn(Position.GiveButton)
+                    .ClickOn(GameObject.Drowcrusher);
 
-                Thread.Sleep(500);
                 if (leader.IsNotThere(item))
                 {
-                    leader.KeyPress(Desktop.Robot.Key.Pause);
-
-                    Thread.Sleep(500);
-                    leader.ClickOn(item);
+                    leader.ClickOn(GameObject.CloseButton)
+                        .ClickOn(Position.InventoryButton)
+                        .RightClickOn(GameObject.ConvenienceStore)
+                        .ClickOn(positionStore)
+                        .ClickOn(item);
                     
                     for (int i = 0; i < 15; i++)
                     {
                         leader.Click();
                     }
 
-                    leader.KeyPress(Desktop.Robot.Key.Pause);
-
-                    leader.ClickOn(Position.GiveButton);
-                    leader.ClickOn(GameObject.Drowcrusher);
+                    leader.ClickOn(Position.ConvinienceStore_ConfirmPurchase)
+                        .ClickOn(GameObject.CloseButton)
+                        .ClickOn(Position.GiveButton)
+                        .ClickOn(GameObject.Drowcrusher);
                 }
 
-                leader.ClickOn(item);
-                leader.ClickOn(Position.ConfirmGiveItem);
-                leader.ClickOn(Position.ClosePopup);
-
-                Thread.Sleep(3000);
-
-                //Waiting end of battle
-                while (leader.IsNotThere(GameObject.Out_Of_Battle))
-                {
-                    Thread.Sleep(1000);
-                    continue;
-                }
-                Thread.Sleep(1000);
-                leader.Click();
+                leader.ClickOn(item)
+                    .ClickOn(Position.ConfirmGiveItem)
+                    .ClickOn(Position.MiddleOfDialogBox)
+                    .Wait(3000)
+                    .WaitFor(GameObject.Out_Of_Battle)
+                    .Wait(1000)
+                    .ClickOn(Position.MiddleOfDialogBox);
             }
         }
     }
