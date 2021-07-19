@@ -12,7 +12,7 @@ namespace Autoclicker.Quests
 
             while(true)
             {
-                leader.SetAutoDelay(500)
+                leader.SetAutoDelay(1000)
                     .ClickOn(GameObject.MoonElder)
                     .ClickOn(Position.Option_MoonHelderTrouble)
                     .ClickOn(Position.Option_IllFindRedRope)

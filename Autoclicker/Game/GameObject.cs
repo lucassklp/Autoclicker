@@ -206,6 +206,11 @@ namespace Autoclicker.Game
         SecondInventory_Activated,
         SecondInventory_Desactivated,
 
+        ThirdInventory_Activated,
+        ThirdInventory_Desactivated,
+        FourthInventory_Activated,
+        FourthInventory_Desactivated,
+
         /*NPC's*/
         Drowcrusher,
         Existent,

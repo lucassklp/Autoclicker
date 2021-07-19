@@ -149,6 +149,32 @@ namespace Autoclicker.Game
             return this;
         }
 
+        public GameWindowController NextInventory()
+        {
+            ClickOn(Position.InventoryButton);
+            Wait(300);
+            if(IsThere(GameObject.FirstInventory_Activated))
+            {
+                ClickOn(GameObject.SecondInventory_Desactivated);
+                ClickOn(GameObject.CloseButton);
+            }
+            else if(IsThere(GameObject.SecondInventory_Activated))
+            {
+                ClickOn(GameObject.ThirdInventory_Desactivated);
+                ClickOn(GameObject.CloseButton);
+            }
+            else if(IsThere(GameObject.ThirdInventory_Activated))
+            {
+                ClickOn(GameObject.FourthInventory_Desactivated);
+                ClickOn(GameObject.CloseButton);
+            }
+            else if(IsThere(GameObject.FourthInventory_Activated))
+            {
+                ClickOn(GameObject.FirstInventory_Desactivated);
+                ClickOn(GameObject.CloseButton);
+            }
+            return this;
+        }
 
         public GameWindowController RightClick()
         {

@@ -13,7 +13,8 @@ namespace Autoclicker.Quests
             var leader = party.First();
             while(true)
             {
-                leader.ClickOn(GameObject.ContributionExchanger)
+                leader.SetAutoDelay(1000)
+                    .ClickOn(GameObject.ContributionExchanger)
                     .ClickOn(Position.IWantToRedeemNow)
                     .ClickOn(Position.TollItem)
                     .ClickOn(Position.ImSureToExchangeIt)
