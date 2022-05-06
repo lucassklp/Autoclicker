@@ -54,6 +54,7 @@ namespace Autoclicker.Quests
                 leader.SetAutoDelay(delay)
                     .ClickOn(Position.GiveButton)
                     .ClickOn(GameObject.Drowcrusher)
+                    .Wait(200)
                     .Wait(300);
 
                 while (leader.IsNotThere(item))
