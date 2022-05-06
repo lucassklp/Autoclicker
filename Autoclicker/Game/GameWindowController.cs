@@ -32,7 +32,9 @@ namespace Autoclicker.Game
 
         private Process process;
         public string Nick {get;set;}
-
+        public int teste = 1000;
+        
+        
         private IRobot robot;
 
         private Comparer comparer;
