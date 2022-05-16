@@ -19,6 +19,8 @@ namespace Autoclicker.Core
 
         public List<Rectangle> SearchAll(Bitmap smallBmp, Bitmap bigBmp, double tolerance)
         {
+            var a = "Not used";
+
             BitmapData smallData =
               smallBmp.LockBits(new Rectangle(0, 0, smallBmp.Width, smallBmp.Height),
                        System.Drawing.Imaging.ImageLockMode.ReadOnly,
